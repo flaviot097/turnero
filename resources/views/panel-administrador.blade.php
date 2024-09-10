@@ -1,6 +1,6 @@
 <style>
 body{
-    background-image: url("/img/fondo-padel.jpeg");
+    background-image: url("/img/fondo-padel.jpg");
     background-size: 100% 100%;
 }
 

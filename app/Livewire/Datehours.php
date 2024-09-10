@@ -86,7 +86,11 @@ class Datehours extends Component
             $json = json_encode($arrayNuevo);
             if ($this->nombre !== null && $this->email !== null && $this->numero !== null) {
                 //dd($json);
-                $resultado = DB::update("update turnos set horario = '$json' where id = '$this->id'");
+                if ($this->cancha[1] == "s") {
+                    $resultado = DB::update("update turnos set horario = '$json' where id = '$this->id'");
+                } else {
+                    $resultado = DB::update("update turnos_c2 set horario = '$json' where id = '$this->id'");
+                }
                 $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre) values (?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre]);
                 if ($resultado1 == true) {
                     session()->flash('message', 'Turno reservado con éxito.');
@@ -105,7 +109,11 @@ class Datehours extends Component
             array_push($arrayActualizar, $turno);
             $json_arr = json_encode($arrayActualizar);
             if ($this->nombre !== null && $this->email !== null && $this->numero !== null) {
+                if ($this->cancha[1] == "s") {
                 $resultado = DB::insert('insert into turnos (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
+            }else{
+                    $resultado = DB::insert('insert into turnos_c2 (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
+                }
                 $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre) values (?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre]);
             }
             if ($resultado === true && $resultado1 === true) {

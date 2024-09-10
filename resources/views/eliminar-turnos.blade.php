@@ -30,6 +30,223 @@
     width: 100%;
     height: 100%;
 }
+body{
+    background-image: url("/img/fondo-padel.jpg");
+    background-size: 100% 100%;
+}
+
+/* From Uiverse.io by Praashoo7 */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.4em;
+  background-color: #171717;
+  border-radius: 25px;
+  transition: .4s ease-in-out;
+}
+
+.form:hover {
+  transform: scale(1.05);
+  border: 1px solid black;
+}
+
+#heading {
+  text-align: center;
+  margin: 2em;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: white;
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+}
+
+.form .btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2.5em;
+}
+
+.button1 {
+  padding: 0.5em;
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  border-radius: 5px;
+  margin-right: 0.5em;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-color: #252525;
+  color: white;
+}
+
+.button1:hover {
+  background-color: black;
+  color: white;
+}
+
+.button2 {
+  padding: 0.5em;
+  padding-left: 2.3em;
+  padding-right: 2.3em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-color: #252525;
+  color: white;
+  margin-bottom: 0.5em !important;
+}
+
+.button2:hover {
+  background-color: rgb(116, 116, 116);
+  color: white;
+
+}
+
+.button3 {
+  margin-bottom: 3em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-color: #252525;
+  color: white;
+}
+
+.button3:hover {
+  background-color: red;
+  color: white;
+}
+
+</style>
+<style>
+    /* style reservasdias*/
+    .card {
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  font-family: Helvetica, sans-serif;
+}
+
+.wrapper {
+  margin: 2rem auto;
+  width: 70%;
+  font-size: small;
+}
+
+.title {
+  text-align: center;
+  color: #1b1b1b;
+}
+
+.heading {
+  font-weight: bold;
+  letter-spacing: 7px;
+  font-size: 1.5rem;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.heading::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #e8e8e8;
+  z-index: -1;
+  filter: blur(50px);
+  height: 50px;
+}
+
+.color {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hex {
+  text-align: end;
+  font-family: monospace;
+  text-transform: uppercase;
+  padding-top: 15px;
+}
+
+
+.night-rider {
+  background: var(--night-rider);
+  color: var(--ch-white);
+  width: 100%;
+border-radius: 5px;
+}
+
+
+.border {
+  color: var(--night-rider);
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.border span {
+  border-radius: 5px;
+  color: var(--ch-white);
+  padding: 2px 4px;
+  background-color: var(--night-rider);
+}
+.contenedor-main,.contenedor-if-else{
+    width: 100%
+}
+.contenedor-todos{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.items-turnero{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.contenedor-domulario-session{
+    widows: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
         </style>
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
@@ -73,46 +290,24 @@
                     </header> --}}
 
                     <main class="mt-6">
-                        <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
-
-
-                            <a
-                                href="{{ route("turnos") }}"
-                                class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#00bfff]/10 sm:size-16" style="background-color: #d6d6d6">
-                                    <!-- icon666.com - MILLIONS vector ICONS FREE --><svg id="svg-cancha" enable-background="new 0 0 512.003 512.003" viewBox="0 0 512.003 512.003" xmlns="http://www.w3.org/2000/svg"><g><path d="m457.703 54.346c-32.417-32.417-74.22-51.623-117.708-54.081-43.797-2.464-84.077 12.306-113.393 41.62-30.42 30.421-57.899 85.335-70.007 139.898-6.047 27.252-7.949 52.338-5.862 74.562-3.609 19.099-9.389 37.66-17.218 55.183-4.766 10.683-10.354 21.093-16.634 31.054-4.422-1.758-9.666-.852-13.241 2.722l-99.993 99.994c-2.322 2.323-3.602 5.41-3.602 8.694 0 3.285 1.28 6.374 3.604 8.696 0 0 32.917 32.873 45.712 45.703 2.319 2.326 5.405 3.608 8.689 3.611h.011c3.281 0 6.367-1.278 8.688-3.599l99.969-99.971c3.57-3.568 4.476-8.811 2.722-13.235 9.967-6.286 20.375-11.875 31.05-16.637 17.59-7.851 36.242-13.652 55.451-17.273 11.815 1.077 24.006 1.007 36.193.02 39.77-3.222 84.783-16.812 123.498-37.286 3.662-1.937 5.061-6.475 3.124-10.136-1.936-3.661-6.474-5.061-10.136-3.124-36.982 19.557-79.882 32.531-117.698 35.595-30.165 2.449-71.722-.231-98.36-26.872-31.974-31.977-31.679-87.786-21.324-134.452 11.532-51.973 37.428-103.998 65.971-132.541 26.253-26.251 62.452-39.481 101.941-37.249 39.803 2.249 78.14 19.904 107.946 49.712 61.302 61.301 66.891 155.455 12.46 209.886-6.075 6.076-13.414 12.179-21.813 18.14-3.378 2.397-4.173 7.079-1.775 10.457 2.396 3.377 7.078 4.172 10.457 1.775 9.084-6.446 17.07-13.097 23.739-19.766 60.278-60.279 54.689-163.95-12.461-231.1zm-365.276 407.168-9.275-9.276c-2.93-2.928-7.678-2.928-10.607 0-2.929 2.93-2.929 7.678 0 10.607l9.275 9.275-23.756 23.756c-12.204-12.233-41.896-41.885-41.896-41.885l23.763-23.762 7.725 7.725c2.93 2.929 7.679 2.93 10.606.001 2.93-2.929 2.93-7.678.001-10.606l-7.725-7.726 28.229-28.229 41.89 41.89zm38.836-38.837-41.89-41.89 22.957-22.957s41.564 41.607 41.868 41.912zm50.693-92.584c10.784 10.784 24.294 18.9 40.158 24.262-9.463 2.993-18.733 6.49-27.735 10.508-12.036 5.369-23.76 11.714-34.932 18.9-11.69-11.716-21.875-21.905-31.14-31.17 7.183-11.168 13.53-22.901 18.906-34.952 4.008-8.972 7.495-18.206 10.48-27.629 5.364 15.779 13.468 29.286 24.263 40.081zm203.049-43.218c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm-88.86 12.692c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm139.63-63.474c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm-38.08-38.08c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm-38.08-38.081c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm-38.08-38.08c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5c4.143 0 7.5 3.358 7.5 7.5zm-38.08-38.08c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5c4.143 0 7.5 3.358 7.5 7.5zm88.86-12.699c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm38.08 38.08c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm38.08 38.08c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm-190.41 114.25c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm88.86-12.699c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm-38.08-38.08c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm-88.86 12.698c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5zm50.775-50.778c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.357 7.5 7.5zm-38.085-38.077c0 4.142-3.358 7.5-7.5 7.5s-7.5-3.358-7.5-7.5 3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5z"/></g></svg>
-                                </div>
-
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Cancha</h2>
-
-                                    <p class="mt-4 text-sm/relaxed">
-                                        N° 1
-                                    </p>
-                                </div>
-
-                                <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" id="flecha" xmlns="http://www.w3.org/2000/svg" fill="#00bfff" viewBox="0 0 24 24" stroke-width="1.5"><path id="flechap" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                            </a>
-
-                            <a
-                                href="{{ route("turnos2") }}"
-                                class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16" style="background-color: #d6d6d6" >
-                                    <svg id="svg-cancha" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M120.8 55L87.58 199h18.52l29.1-126h18.2l-20.6 126h18.3l10.1-62H247v62h18v-62h85.8l10.1 62h18.3L358.6 73h18.2l29.1 126h18.5L391.2 55H120.8zm50.9 18h168.6l7.6 46H164.1l7.6-46zM73 217v30h366v-30H73zm-.64 48L20.69 489H491.3l-51.7-224h-18.5l47.6 206h-45L390 265h-18.3l14.2 87H265v-87h-18v87H126.1l14.2-87H122L88.35 471H43.31l47.56-206H72.36zm50.74 105h265.8l16.5 101H106.6l16.5-101z"></path></g></svg>
-                                </div>
-
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Cancha</h2>
-
-                                    <p class="mt-4 text-sm/relaxed">
-                                        N° 2
-                                    </p>
-                                </div>
-
-                                <svg id="flecha" class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                            </a>
+                        <div class="grid gap-6 lg:grid-cols-1 lg:gap-8">
+                            <div class="contenedor-domulario-session" >
+                                <form class="form" action="{{ route("cancelar") }}" method="post" >
+                                    @csrf
+                                    {{ csrf_token() }}
+                                    <p id="heading">Eliminar Turno</p>
+                                    <div class="field">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"></path>
+                                    </svg>
+                                    <input name="email" autocomplete="on" placeholder="Email" class="input-field" type="text">
+                                    </div>
+                                    <div class="field">
+                                    <div class="btn">
+                                    <button class="button2" type="submit" >Eliminar</button>
+                                    </div>
+                                </form>
+                            </div>
 
                             <!--<div class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]">
                                 <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">

@@ -12,7 +12,7 @@
         width: 65%;
     }
 body{
-    background-image: url("/img/fondo-padel.jpeg");
+    background-image: url("/img/fondo-padel.jpg");
     background-size: 100% 100%;
 }
 .data-picker{
