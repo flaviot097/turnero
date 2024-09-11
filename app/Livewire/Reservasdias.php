@@ -32,6 +32,7 @@ class Reservasdias extends Component
             array_push($arreglo, $turno->nombre);
             array_push($arreglo, $turno->numero_telefono);
             array_push($arreglo, $turno->email);
+            array_push($arreglo, $turno->cancha);
             array_push($this->array_new, $arreglo);
             $this->fechaHoy = date('Y-m-d');
             $dia = explode("-", $this->fechaHoy)[2];

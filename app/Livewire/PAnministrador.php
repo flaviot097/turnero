@@ -22,13 +22,14 @@ class PAnministrador extends Component
     public function cambiarStatus()
     {
         $consulta = DB::select("select * from usuarios");
+        if (!isset($consulta)) {
+            //si no hay susuario se crea uno
+            DB::insert('insert into usuarios (user,contrasenia) values (?, ?)', ["administrador_padel", "QWEas150"]);
+            //INSERT INTO padel.usuariosusuarios  (user,contrasenia) VALUES ("administrador_padel","QWEas150")
+        }
+
         if ($this->status == "falso") {
 
-            if (!isset($consulta)) {
-                //si no hay susuario se crea uno
-                DB::insert('insert into usuarios (user,contrasenia) values (?, ?)', ["administrador_padel", "QWEas150"]);
-                //INSERT INTO padel.usuariosusuarios  (user,contrasenia) VALUES ("administrador_padel","QWEas150")
-            }
 
             $contrasenia_db = $consulta[0]->contrasenia;
             $user_db = $consulta[0]->user;

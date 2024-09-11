@@ -15,6 +15,7 @@
                             <p class="items-turnero" >Horario:{{$turno[1]}}</p>
                             <p class="items-turnero" >{{$turno[2]}}</p>
                             <p class="items-turnero" >Numero:{{$turno[3]}}</p>
+                            <p class="items-turnero" >{{$turno[5]}}</p>
                             <span class="hex">{{$turno[4]}}</span>
                         </div>
                 </div>
@@ -33,6 +34,7 @@
                         <p class="items-turnero" >Horario:{{$turno[1]}}</p>
                         <p class="items-turnero" >{{$turno[2]}}</p>
                         <p class="items-turnero" >Numero:{{$turno[3]}}</p>
+                        <p class="items-turnero" >{{$turno[5]}}</p>
                         <span class="hex">{{$turno[4]}}</span>
                     </div>
                 </div>b
@@ -62,6 +64,7 @@
                             <p class="items-turnero" >Horario:{{$turno[1]}}</p>
                             <p class="items-turnero" >{{$turno[2]}}</p>
                             <p class="items-turnero" >Numero:{{$turno[3]}}</p>
+                            <p class="items-turnero" >{{$turno[5]}}</p>
                             <span class="hex">{{$turno[4]}}</span>
                         </div>
                 </div>

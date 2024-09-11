@@ -14,12 +14,21 @@ class deleteShift extends Controller
     public function deleteShifts(Request $request)
     {
         $mail = $request->get("email");
-        $result = DB::select("select fecha ,nombre from reservas where email = ?", [$mail]); //obtenemos la fecha de la reserva
-        dd($result);
+        $result = DB::select("select fecha ,cancha from reservas where email = ?", [$mail]); //obtenemos la fecha de la reserva
         if (count($result) !== 0) {
             $fecha = explode("_", $result[0]->fecha);
             $horario = $fecha[1];
-            $data = DB::select("select horario from turnos where fecha = ?", [$fecha[0]]);//obtenemos los hprarios de la tabla turnos
+            $cancha = $result[0]->cancha;
+
+            $tabla = "";
+            if ($cancha == "cancha1") {
+                $tabla = "turnos";
+            } else {
+                $tabla = "turnos_c2";
+            }
+
+            $data = DB::select("select horario from $tabla where fecha = ?", [$fecha[0]]);
+            //$data = DB::select("select horario from turnos where fecha = ?", [$fecha[0]]);obtenemos los hprarios de la tabla turnos
 
             foreach ($data as $turno) {
                 // decodifico a json
@@ -28,12 +37,47 @@ class deleteShift extends Controller
                 $this->updete_array = array_filter($array_horarios, function ($value) use ($horario) {
                     return $value !== $horario;
                 });
+                ;
             }
-            //return $data;
+            // eliminar registros con mas de un turno
+            if (count(json_decode($data[0]->horario)) !== 1) {
+
+                //dd($fecha[0]);
+                //actualizo registro
+
+                $fecha_update = $fecha[0];
+                $json = json_encode(array_values($this->updete_array));
+                $ejecucion1 = DB::update("update $tabla set horario = ? where fecha = ?", [$json, $fecha_update]);
+
+                //elimino de reservas
+                $ejecucion2 = DB::delete("delete from reservas where email = ?", [$mail]);
+                if ($ejecucion1 !== 0 && $ejecucion2 !== 0) {
+                    return response()->json(['message' => 'Turno eliminado con exito'], 200);
+                } else {
+                    return response()->json(['message' => 'no pudo ser eliminado'], 200);
+                }
+            } else {
+                //actualizo registro cancha uno
+                $fecha_update = $fecha[0];
+                $json = json_encode(array_values($this->updete_array));
+                $ejecucion1 = DB::update("update $tabla set horario = ? where fecha = ?", [$json, $fecha_update]);
+
+                //elimino de reservas
+                $ejecucion2 = DB::delete("delete from reservas where email = ?", [$mail]);
+                if ($ejecucion1 !== 0 && $ejecucion2 !== 0) {
+                    return redirect()->back()->with(['message' => 'Turno eliminado con exito'], 200);
+                } else {
+                    return redirect()->back()->with(['message' => 'no pudo ser eliminado'], 200);
+                }
+            }
+            ;
+
 
         } else {
-            dd("no entro");
+            return redirect()->back()->with(['message' => 'No hay turnos registrados con este Email']);
         }
-        var_dump($this->updete_array);
+        if (count($this->updete_array) == 0) {
+
+        }
     }
 }

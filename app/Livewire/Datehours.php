@@ -91,7 +91,12 @@ class Datehours extends Component
                 } else {
                     $resultado = DB::update("update turnos_c2 set horario = '$json' where id = '$this->id'");
                 }
-                $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre) values (?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre]);
+                if ($this->cancha[1] == "s") {
+                $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha1"]);
+
+                }else{
+                    $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha2"]);
+                }
                 if ($resultado1 == true) {
                     session()->flash('message', 'Turno reservado con éxito.');
                     // enviar mail
@@ -110,11 +115,15 @@ class Datehours extends Component
             $json_arr = json_encode($arrayActualizar);
             if ($this->nombre !== null && $this->email !== null && $this->numero !== null) {
                 if ($this->cancha[1] == "s") {
-                $resultado = DB::insert('insert into turnos (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
-            }else{
+                    $resultado = DB::insert('insert into turnos (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
+                } else {
                     $resultado = DB::insert('insert into turnos_c2 (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
                 }
-                $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre) values (?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre]);
+                if ($this->cancha[1] == "s") {
+                    $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha1"]);
+                } else {
+                    $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha2"]);
+                }
             }
             if ($resultado === true && $resultado1 === true) {
                 session()->flash('message', 'Turno reservado con éxito.');

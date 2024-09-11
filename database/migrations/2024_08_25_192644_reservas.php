@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('numero_telefono');
             $table->string('nombre');
+            $table->string('cancha');
             $table->rememberToken();
             $table->timestamps();
         });
