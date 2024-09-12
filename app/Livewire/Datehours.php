@@ -32,7 +32,7 @@ class Datehours extends Component
     public $listTurnos = array("9:00 - 10:30", "10:30 - 12:00", "12:00 - 13:30", "13:30 - 15:00", "15:00 - 16:30", "16:30 - 18:00", "18:00 - 19:30", "19:30 - 21:00", "21:00 - 22:30");
     public $listdb;
     public function selecShift($turno)
-    {
+    {   //seleccionar turnos
         $this->horario_seleccionado = $turno;
     }
     public function selecthour()
@@ -57,7 +57,12 @@ class Datehours extends Component
 
     public function createShift()
     {
+
         $turno = $this->horario_seleccionado;
+        //se analiza si es nulo el el horario seleccionado
+        if ($turno == null) {
+            return session()->flash('message', 'Selecione un turno valido');
+        }
         $fecha = $this->dateQuery;
         $fechaid = $fecha . "_" . $turno;
         $actualizar = "";
@@ -92,9 +97,9 @@ class Datehours extends Component
                     $resultado = DB::update("update turnos_c2 set horario = '$json' where id = '$this->id'");
                 }
                 if ($this->cancha[1] == "s") {
-                $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha1"]);
+                    $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha1"]);
 
-                }else{
+                } else {
                     $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha2"]);
                 }
                 if ($resultado1 == true) {

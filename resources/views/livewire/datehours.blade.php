@@ -2,7 +2,9 @@
 
     @if (count($listado_reservas)===0)
         @foreach($listTurnos as $turno)
-                <button class="turnos-horarios {{ $horario_seleccionado === $turno ? 'selected' : '' }}" wire:click="selecShift('{{$turno}}')" >{{$turno}}</button>
+                <button class="turnos-horarios {{ $horario_seleccionado === $turno ? 'selected' : '' }}" wire:click="selecShift('{{$turno}}')" @if ( $diaSeleccionado== null)
+                disabled
+                @endif >{{$turno}}</button>
         @endforeach
     @else
         @foreach($listado_disponibles as $turno)
@@ -19,7 +21,9 @@
         <label for="email">Email</label>
         <input type="email" wire:model="email" required >
 
-        <button class="guardar-turno" type="submit">Hacer reserva</button>
+        <button class="guardar-turno" type="submit" @if ($horario_seleccionado == null)
+        disabled
+        @endif >Hacer reserva</button>
     </form>
     {{-- <div>
         @if (session()->has('message'))

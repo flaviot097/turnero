@@ -5,7 +5,7 @@
         @if ($arrayDateDays)
         <div class="diasmes" >
             @for ($i = 1; $i <= $diasDelMes; $i++)
-                @if ($i<=$actualday)
+                @if ($i<$actualday)
                     <button disabled class="calendar-day" id="disabled-button" wire:click="selectDate({{ null }})">{{$i}}</button>
                 @endif
                 @if ($i>=$actualday && $i <= $actualday+7)
