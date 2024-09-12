@@ -5,7 +5,16 @@
         @if ($arrayDateDays)
         <div class="diasmes" >
             @for ($i = 1; $i <= $diasDelMes; $i++)
-                <button class="calendar-day {{ $diaSeleccionado === $i ? 'selected' : '' }}" wire:click="selectDate({{ $i }})" class="fila">{{$i}}</button>
+                @if ($i<=$actualday)
+                    <button disabled class="calendar-day" id="disabled-button" wire:click="selectDate({{ null }})">{{$i}}</button>
+                @endif
+                @if ($i>=$actualday && $i <= $actualday+7)
+                    <button class="calendar-day {{ $diaSeleccionado === $i ? 'selected' : '' }}" wire:click="selectDate({{ $i }})" class="fila">{{$i}}</button>
+                @endif
+                @if ($actualday+7 <= $i )
+                    <button disabled class="calendar-day" id="disabled-button" wire:click="selectDate({{ null }})">{{$i}}</button>
+                @endif
+                {{-- <button class="calendar-day {{ $diaSeleccionado === $i ? 'selected' : '' }}" wire:click="selectDate({{ $i }})" class="fila">{{$i}}</button> --}}
             @endfor
         </div>
             @livewire('datehours',[

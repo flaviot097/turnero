@@ -200,6 +200,15 @@ label{
 #svg-atras{
     height: 5%;
 }
+#disabled-button{
+    text-decoration-line: line-through !important;
+    text-decoration-color: black !important ;
+}
+#disabled-button:hover{
+    text-decoration-line: line-through !important;
+    text-decoration-color: black !important ;
+
+}
 </style>
 @livewireStyles
 
