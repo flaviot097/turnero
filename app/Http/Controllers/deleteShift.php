@@ -52,9 +52,9 @@ class deleteShift extends Controller
                 //elimino de reservas
                 $ejecucion2 = DB::delete("delete from reservas where email = ?", [$mail]);
                 if ($ejecucion1 !== 0 && $ejecucion2 !== 0) {
-                    return response()->json(['message' => 'Turno eliminado con exito'], 200);
+                    return redirect()->back()->with(['message' => 'Turno eliminado con exito'], 200);
                 } else {
-                    return response()->json(['message' => 'no pudo ser eliminado'], 200);
+                    return redirect()->back()->with(['message' => 'no pudo ser eliminado'], 200);
                 }
             } else {
                 //actualizo registro cancha uno

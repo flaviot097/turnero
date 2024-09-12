@@ -247,6 +247,13 @@ border-radius: 5px;
     justify-content: center;
 }
 
+.error{
+    color: #FF2D20
+}
+.exito{
+    color: #2ECC40
+}
+
         </style>
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
@@ -306,9 +313,9 @@ border-radius: 5px;
                                         <button class="button2" type="submit" >Eliminar</button>
                                     </div>
                                     @if(session('message'))
-                                        <div class="alert alert-warning text-center" style="color: #FF2D20" >
-                                            {{ session('message') }}
-                                        </div>
+                                          <div class="alert alert-warning text-center {{ session('message')=='Turno eliminado con exito' ? 'exito' : 'error' }}"  >
+                                              {{ session('message') }}
+                                          </div>
                                     @endif
                                 </form>
                             </div>

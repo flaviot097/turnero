@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("welcome");
 
 Route::get("/administrador", function () {
     return view("panel-administrador");

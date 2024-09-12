@@ -46,6 +46,8 @@ body{
         <div class="text" >
             <span class="texto-reserva" >Se hizo la reserva con exito</span>
             <p>Se ha enviado un correo con a su <a href="https://gmail.com/">Gmail</a></p>
+            <br>
+            <a href="{{ Route('welcome') }}">Volver al Inicio</a>
         </div>
     </div>
 

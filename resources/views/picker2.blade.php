@@ -197,10 +197,13 @@ label{
 .guardar-turno:hover{
     background-color: darkgreen;
 }
+#svg-atras{
+    height: 5%;
+}
 </style>
 @livewireStyles
 
-
+<a href="{{ route('welcome') }}"><svg id="svg-atras" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" data-name="Layer 2"><path d="m12.41 16 9.3-9.29a1 1 0 1 0 -1.42-1.42l-10 10a1 1 0 0 0 0 1.42l10 10a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"/></g></svg></a>
 <div class="contenedor" >
     <div class="contenedor-texto-barra-picker" >
         <h1 class="text-center-dias" >Dias Disponibles</h1>
