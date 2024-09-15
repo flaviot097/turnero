@@ -19,13 +19,14 @@ class Datehours extends Component
 
     #[Reactive]
     public $reactividad;
-
     public $horario_seleccionado;
     private $id;
 
     public $nombre;
     public $numero;
     public $email;
+    public $precedent;
+
     public $listado_reservas = array();
     public $listado_disponibles;
 
@@ -37,6 +38,7 @@ class Datehours extends Component
     }
     public function selecthour()
     {
+
         $this->dateQuery = $this->anio_padre . "-" . $this->mes_padre . "-" . $this->diaSeleccionado;
         if ($this->cancha[1] == "s") {
             $dbQuery = DB::select("select * from turnos where fecha = '$this->dateQuery'");
@@ -51,10 +53,36 @@ class Datehours extends Component
 
         }
 
-        //filtrar los turnos disponibles
-        $this->listado_disponibles = array_diff($this->listTurnos, $this->listado_reservas);
-    }
 
+        //filtrar los turnos disponibles
+        //si hay turnos
+        if ($this->listado_reservas !== null) {
+            //dejo un presecente del estado anterior
+            $this->precedent = ($this->reactividad == "true") ? "false" : "true";
+            $this->listado_disponibles = array_diff($this->listTurnos, $this->listado_reservas);
+            $this->listado_reservas = array();
+        } else {
+            $this->listado_disponibles = $this->listTurnos;
+            //si no hay reservas, mostrar todos los turnos
+        }
+
+        /*if ($this->cancha[1] == "s") {
+            $dbQuery = DB::select("select * from turnos where fecha = '$this->dateQuery'");
+        } else {
+            $dbQuery = DB::select("select * from turnos_c2 where fecha = '$this->dateQuery'");
+        }
+        $this->listdb = $dbQuery;
+        foreach ($this->listdb as $turno_disponibles) {
+            if (count(json_decode($turno_disponibles->horario)) !== 0) {
+                $this->listado_reservas = json_decode($turno_disponibles->horario);
+            }
+
+        }
+
+
+        //filtrar los turnos disponibles
+        $this->listado_disponibles = array_diff($this->listTurnos, $this->listado_reservas);*/
+    }
     public function createShift()
     {
 
@@ -89,7 +117,7 @@ class Datehours extends Component
         if (count($this->listdb) !== 0) {
             array_push($arrayNuevo, $turno);
             $json = json_encode($arrayNuevo);
-            if ($this->nombre !== null && $this->email !== null && $this->numero !== null) {
+            if ($this->nombre !== null && $this->email !== null && $this->numero !== null && $this->horario_seleccionado !== null) {
                 //dd($json);
                 if ($this->cancha[1] == "s") {
                     $resultado = DB::update("update turnos set horario = '$json' where id = '$this->id'");
@@ -118,16 +146,25 @@ class Datehours extends Component
         if (count($this->listdb) === 0) {
             array_push($arrayActualizar, $turno);
             $json_arr = json_encode($arrayActualizar);
-            if ($this->nombre !== null && $this->email !== null && $this->numero !== null) {
-                if ($this->cancha[1] == "s") {
-                    $resultado = DB::insert('insert into turnos (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
-                } else {
-                    $resultado = DB::insert('insert into turnos_c2 (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
-                }
+            if ($this->nombre !== null && $this->email !== null && $this->numero !== null && $this->horario_seleccionado !== null) {
+
+                // analiso cancha 1 o cancha 2 y inserto datos
+
+                //cancha1
                 if ($this->cancha[1] == "s") {
                     $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha1"]);
+                    //si no hay otra reserva a ese mail hago la reserva
+                    if ($resultado1) {
+                        $resultado = DB::insert('insert into turnos (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
+                    }
                 } else {
+                    //cancha 2
                     $resultado1 = DB::insert('insert into reservas (fecha, email, numero_telefono, nombre, cancha) values (?,?,?,?,?)', [$fechaid, $this->email, $this->numero, $this->nombre, "cancha2"]);
+                    //si no hay otra reserva a ese mail hago la reserva
+                    if ($resultado1) {
+                        $resultado = DB::insert('insert into turnos_c2 (fecha, horario) values (?, ?)', [$fecha, $json_arr]);
+                    }
+
                 }
             }
             if ($resultado === true && $resultado1 === true) {
@@ -151,9 +188,9 @@ class Datehours extends Component
 
     public function render()
     {
-        if ($this->reactividad === "true") {
-            $this->selecthour();
-        }
+
+        $this->selecthour();
+
         return view('livewire.datehours');
     }
 }

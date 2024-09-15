@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class DatePick extends Component
 {
@@ -15,10 +16,23 @@ class DatePick extends Component
     public $cancha;
     public $mes;
     public $listener;
+    public $arregloturnosDisponibles;
+    public $arregloReservas;
+    public $listado_disponibles;
+    public $listTurnos = array("9:00 - 10:30", "10:30 - 12:00", "12:00 - 13:30", "13:30 - 15:00", "15:00 - 16:30", "16:30 - 18:00", "18:00 - 19:30", "19:30 - 21:00", "21:00 - 22:30");
+
     public function selectDate($i)
     {
-        $this->listener = "true";
+        if ($this->listener == null) {
+            $this->listener = "true";
+        } elseif ($this->listener == "true") {
+            $this->listener = "false"; // para que no se repita la acción
+        } else {
+            $this->listener = "true";
+        }
+
         $this->diaSeleccionado = $i;
+
     }
     public function render()
     {
@@ -34,7 +48,7 @@ class DatePick extends Component
         $this->diasDelMes = $diasDelMes;
         $arrayDateDays = array_fill(0, $diasDelMes, 0);
         $this->arrayDateDays = $arrayDateDays;
-        //dd($arrayDateDays);
+
         return view('livewire.date-pick');
     }
 
