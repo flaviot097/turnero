@@ -149,6 +149,10 @@ border-radius: 10px;
 }
 .turnos-horarios{
     width: 45%;
+    background-color: rgb(23, 28, 34);
+}
+.turnos-horarios:hover{
+    background-color: rgb(69, 70, 71);
 }
 .formulario{
 margin-top: 20px;
@@ -186,15 +190,15 @@ label{
 }
 /* cambiar de color al clikear */
 .calendar-day.selected {
-    background-color: #00bfff;
+    background-color: rgb(23, 28, 34);
     color: white;
 }
 .turnos-horarios.selected {
-    background-color: #1884a8;
+    background-color: #474747;
     color: white;
 }
 .guardar-turno{
-    background-color: #1ba0cc;
+    background-color: rgb(23, 28, 34);
 }
 .guardar-turno:hover{
     background-color: darkgreen;
