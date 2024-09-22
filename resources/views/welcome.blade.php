@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>La Candela Padel</title>
+        <title>Facil de Lavar</title>
         <meta name="author" content="Flavio Trocello">
 
         <!-- Fonts -->
@@ -111,7 +111,7 @@
                                     <h2 class="text-xl font-semibold text-black dark:text-white">Sacar turno</h2>
 
                                     <p class="mt-4 text-sm/relaxed">
-                                        Ver disponibilidad horaria y canchas
+                                        Ver disponibilidad horaria de lavaderos
                                     </p>
                                 </div>
 
@@ -130,7 +130,7 @@
                                     <h2 class="text-xl font-semibold text-black dark:text-white">Cancelar</h2>
 
                                     <p class="mt-4 text-sm/relaxed">
-                                        Cancele el Turno de la cancha.
+                                        Cancele el Turno de lavado.
                                     </p>
                                 </div>
 
